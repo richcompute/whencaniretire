@@ -3,6 +3,18 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state =  { postTaxIncome : 50000,
+                    currentExpense : 45000,
+                    retirementExpense: 40000,
+                    currentNetworth: 0}
+  }
+
+  handleChange(e, name) {
+    this.setState({[name]: e.target.value})
+  }
+
   render() {
     return (
       <div className="App">
@@ -13,6 +25,19 @@ class App extends Component {
         <p className="App-intro">
           Enter the information requested to figure out your retirement date
         </p>
+        <p>
+          Your Take Home Pay <input type="text" name="postTaxIncome" value={this.state.postTaxIncome} onChange={ (e) => this.handleChange(e, 'postTaxIncome') } />
+        </p>
+        <p>
+          Your Current Expense <input type="text" name="currentExpense" value={this.state.currentExpense} onChange={ (e) => this.handleChange(e, 'currentExpense') } />
+        </p>
+        <p>
+          Your Retirement Expense <input type="text" name="retirementExpense" value={this.state.retirementExpense} onChange={ (e) => this.handleChange(e, 'retirementExpense') } />
+        </p>
+        <p>
+          Your Current Net Worth <input type="text" name="currentNetworth" value={this.state.currentNetworth} onChange={ (e) => this.handleChange(e, 'currentNetworth') } />
+        </p>
+
       </div>
     );
   }
