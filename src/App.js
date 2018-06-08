@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import SavingRate from './SavingRate.js';
+
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state =  { postTaxIncome : 50000,
+    this.state =  { postTaxIncome : 100000,
                     currentExpense : 45000,
                     retirementExpense: 40000,
                     currentNetworth: 0}
@@ -37,7 +39,7 @@ class App extends Component {
         <p>
           Your Current Net Worth <input type="text" name="currentNetworth" value={this.state.currentNetworth} onChange={ (e) => this.handleChange(e, 'currentNetworth') } />
         </p>
-
+        <SavingRate income={this.state.postTaxIncome} expense={this.state.currentExpense}/>
       </div>
     );
   }
