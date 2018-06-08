@@ -10,14 +10,16 @@ class SavingRate extends Component {
     }
   }
 
-  componentDidMount() {
-  this.setState({
-    postTaxIncome: this.props.income,
-    currentExpense: this.props.expense
-  });
-}
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+    postTaxIncome: nextProps.income,
+    currentExpense: nextProps.expense
+      }
+  }
+
   render() {
-    return (this.state.postTaxIncome - this.state.currentExpense) / (this.state.postTaxIncome) * 100 + '%'
+    const isValidSavingRate = this.state.postTaxIncome >= this.state.currentExpense;
+    return isValidSavingRate ? (Math.round((this.state.postTaxIncome - this.state.currentExpense) / (this.state.postTaxIncome) * 100) + '%') : "Invalid Saving Rate";
   }
 }
 
