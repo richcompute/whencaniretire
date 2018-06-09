@@ -10,7 +10,18 @@ class App extends Component {
     this.state =  { postTaxIncome : 100000,
                     currentExpense : 45000,
                     retirementExpense: 40000,
-                    currentNetworth: 0}
+                    currentNetworth: 0,
+                    worksheet : [
+                      {
+                        year: 0,
+                        startingNetworth : 0,
+                        investment : 0,
+                        interest : 0,
+                        endingNetworth : 0,
+                        canRetire : false
+                      }
+                    ]
+                  }
   }
 
   handleChange(e, name) {
