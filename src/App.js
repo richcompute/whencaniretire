@@ -7,10 +7,16 @@ import SavingRate from './SavingRate.js';
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state =  { postTaxIncome : 100000,
-                    currentExpense : 45000,
-                    retirementExpense: 40000,
-                    currentNetworth: 0,
+    this.postTaxIncome = 100000;
+    this.currentExpense = 45000;
+    this.retirementExpense = 40000;
+    this.currentNetworth = 0;
+    this.interestRate = 0.05;
+
+    this.state =  { postTaxIncome : this.postTaxIncome,
+                    currentExpense : this.currentExpense,
+                    retirementExpense: this.retirementExpense,
+                    currentNetworth: this.currentNetworth,
                     worksheet : [
                       {
                         year: 0,
@@ -26,15 +32,14 @@ class App extends Component {
 
   updateFullState() {
     var worksheetData = [];
-    var interestRate = 0.05;
 
-    var endingNetworth = this.state['currentNetworth'];
+    var endingNetworth = this.currentNetworth;
     for (var i = 0; i < 100; i++) {
       var entry = {};
       entry['year'] = i;
       entry['startingNetworth'] = endingNetworth;
-      entry['investment'] = this.state['postTaxIncome'] - this.state['currentExpense'];
-      entry['interest]'] = (entry['startingNetworth'] + entry['investment'] / 2) * interestRate;
+      entry['investment'] = this.postTaxIncome - this.currentExpense;
+      entry['interest]'] = (entry['startingNetworth'] + entry['investment'] / 2) * this.interestRate;
       endingNetworth = entry['startingNetworth'] + entry['investment'] + entry['interest'];
       entry['endingNetworth'] = endingNetworth;
       worksheetData.push(entry);
@@ -44,6 +49,7 @@ class App extends Component {
   }
 
   handleChange(e, name) {
+    this[name] = e.target.value;
     this.setState({[name]: e.target.value})
     this.updateFullState();
   }
