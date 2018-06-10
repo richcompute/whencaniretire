@@ -24,8 +24,28 @@ class App extends Component {
                   }
   }
 
+  updateFullState() {
+    var worksheetData = [];
+    var interestRate = 0.05;
+
+    var endingNetworth = this.state['currentNetworth'];
+    for (var i = 0; i < 100; i++) {
+      var entry = {};
+      entry['year'] = i;
+      entry['startingNetworth'] = endingNetworth;
+      entry['investment'] = this.state['postTaxIncome'] - this.state['currentExpense'];
+      entry['interest]'] = (entry['startingNetworth'] + entry['investment'] / 2) * interestRate;
+      endingNetworth = entry['startingNetworth'] + entry['investment'] + entry['interest'];
+      entry['endingNetworth'] = endingNetworth;
+      worksheetData.push(entry);
+    }
+
+    this.setState({worksheet: worksheetData});
+  }
+
   handleChange(e, name) {
     this.setState({[name]: e.target.value})
+    this.updateFullState();
   }
 
   render() {
