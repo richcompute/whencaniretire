@@ -5,20 +5,24 @@ class SavingRate extends Component {
     super(props)
 
     this.state = {
-      postTaxIncome: this.props.income,
-      currentExpense: this.props.expense
+      postTaxIncome: parseInt(this.props.income, 10),
+      currentExpense: parseInt(this.props.expense, 10)
     }
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     return {
-    postTaxIncome: nextProps.income,
-    currentExpense: nextProps.expense
+    postTaxIncome: parseInt(nextProps.income, 10),
+    currentExpense: parseInt(nextProps.expense, 10)
       }
   }
 
   render() {
-    const isValidSavingRate = this.state.postTaxIncome >= this.state.currentExpense;
+    console.log("PostTaxIncome: " + this.state.postTaxIncome);
+    console.log("CurrentExpense: " + this.state.currentExpense);
+
+    let isValidSavingRate = (this.state.postTaxIncome >= this.state.currentExpense);
+    console.log("isValidSavingRate:" + isValidSavingRate);
     return isValidSavingRate ? (Math.round((this.state.postTaxIncome - this.state.currentExpense) / (this.state.postTaxIncome) * 100) + '%') : "Invalid Saving Rate";
   }
 }

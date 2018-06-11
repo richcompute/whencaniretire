@@ -65,16 +65,16 @@ class App extends Component {
           Enter the information requested to figure out your retirement date
         </p>
         <p>
-          Your Take Home Pay <input type="text" name="postTaxIncome" value={this.state.postTaxIncome} onChange={ (e) => this.handleChange(e, 'postTaxIncome') } />
+          Your Take Home Pay <input type="text" type="number" name="postTaxIncome" value={this.state.postTaxIncome} onChange={ (e) => this.handleChange(e, 'postTaxIncome') } />
         </p>
         <p>
-          Your Current Expense <input type="text" name="currentExpense" value={this.state.currentExpense} onChange={ (e) => this.handleChange(e, 'currentExpense') } />
+          Your Current Expense <input type="text" type="number" name="currentExpense" value={this.state.currentExpense} onChange={ (e) => this.handleChange(e, 'currentExpense') } />
         </p>
         <p>
-          Your Retirement Expense <input type="text" name="retirementExpense" value={this.state.retirementExpense} onChange={ (e) => this.handleChange(e, 'retirementExpense') } />
+          Your Retirement Expense <input type="text" type="number" name="retirementExpense" value={this.state.retirementExpense} onChange={ (e) => this.handleChange(e, 'retirementExpense') } />
         </p>
         <p>
-          Your Current Net Worth <input type="text" name="currentNetworth" value={this.state.currentNetworth} onChange={ (e) => this.handleChange(e, 'currentNetworth') } />
+          Your Current Net Worth <input type="text" type="number" name="currentNetworth" value={this.state.currentNetworth} onChange={ (e) => this.handleChange(e, 'currentNetworth') } />
         </p>
         <SavingRate income={this.state.postTaxIncome} expense={this.state.currentExpense}/>
       </div>
