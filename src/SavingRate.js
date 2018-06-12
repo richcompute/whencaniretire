@@ -22,7 +22,6 @@ class SavingRate extends Component {
     console.log("CurrentExpense: " + this.state.currentExpense);
 
     let isValidSavingRate = (this.state.postTaxIncome >= this.state.currentExpense);
-    console.log("isValidSavingRate:" + isValidSavingRate);
     return isValidSavingRate ? (Math.round((this.state.postTaxIncome - this.state.currentExpense) / (this.state.postTaxIncome) * 100) + '%') : "Invalid Saving Rate";
   }
 }
