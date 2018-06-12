@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import RetirementComputation from './RetirementComputation.js';
 import SavingRate from './SavingRate.js';
 
 class App extends Component {
@@ -12,6 +13,7 @@ class App extends Component {
     this.retirementExpense = 40000;
     this.currentNetworth = 0;
     this.interestRate = 0.05;
+    this.retirementNetworthGoal = 40000 / 0.04;
 
     this.state =  { postTaxIncome : this.postTaxIncome,
                     currentExpense : this.currentExpense,
@@ -39,9 +41,10 @@ class App extends Component {
       entry['year'] = i;
       entry['startingNetworth'] = endingNetworth;
       entry['investment'] = this.postTaxIncome - this.currentExpense;
-      entry['interest]'] = (entry['startingNetworth'] + entry['investment'] / 2) * this.interestRate;
+      entry['interest'] = (entry['startingNetworth'] + entry['investment'] / 2) * this.interestRate;
       endingNetworth = entry['startingNetworth'] + entry['investment'] + entry['interest'];
       entry['endingNetworth'] = endingNetworth;
+      entry['canRetire'] = (endingNetworth >= this.retirementNetworthGoal);
       worksheetData.push(entry);
     }
 
@@ -77,6 +80,7 @@ class App extends Component {
           Your Current Net Worth <input type="text" type="number" name="currentNetworth" value={this.state.currentNetworth} onChange={ (e) => this.handleChange(e, 'currentNetworth') } />
         </p>
         <SavingRate income={this.state.postTaxIncome} expense={this.state.currentExpense}/>
+        <RetirementComputation data={this.state.worksheet}/>
       </div>
     );
   }
