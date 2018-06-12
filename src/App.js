@@ -15,24 +15,26 @@ class App extends Component {
     this.interestRate = 0.05;
     this.retirementNetworthGoal = 40000 / 0.04;
 
-    this.state =  { postTaxIncome : this.postTaxIncome,
-                    currentExpense : this.currentExpense,
-                    retirementExpense: this.retirementExpense,
-                    currentNetworth: this.currentNetworth,
-                    worksheet : [
-                      {
-                        year: 0,
-                        startingNetworth : 0,
-                        investment : 0,
-                        interest : 0,
-                        endingNetworth : 0,
-                        canRetire : false
-                      }
-                    ]
-                  }
+    this.state = {
+      postTaxIncome: this.postTaxIncome,
+      currentExpense: this.currentExpense,
+      retirementExpense: this.retirementExpense,
+      currentNetworth: this.currentNetworth,
+      worksheet: [
+        {
+          year: 0,
+          startingNetworth: 0,
+          investment: 0,
+          interest: 0,
+          endingNetworth: 0,
+          canRetire: false
+        }
+      ]
+    }
+    this.state.worksheet = this.computeWorksheetData()
   }
 
-  updateFullState() {
+  computeWorksheetData() {
     var worksheetData = [];
 
     var endingNetworth = this.currentNetworth;
@@ -48,7 +50,11 @@ class App extends Component {
       worksheetData.push(entry);
     }
 
-    this.setState({worksheet: worksheetData});
+    return worksheetData
+  }
+
+  updateFullState() {
+    this.setState({worksheet: this.computeWorksheetData()});
   }
 
   handleChange(e, name) {

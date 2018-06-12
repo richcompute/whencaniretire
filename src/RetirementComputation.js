@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 class RetirementComputation extends Component {
   constructor(props) {
     super(props)
-//    this.state = {
-//      data: this.props.data
-//    }
+    console.log("Constructor: " + JSON.stringify(props, null, 2));
+    this.state = {
+      data: props.data
+    }
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -18,11 +19,13 @@ class RetirementComputation extends Component {
     // find the first year with `canRetire` being true
     let canRetire = -1;
     for (let entry in this.state.data) {
-      if (this.state.data[entry].canRetire === true) {
+      if (this.state.data[entry].canRetire) {
         canRetire = this.state.data[entry].year;
         break;
       }
     }
+
+    console.log(canRetire);
 
     let userMessage;
     if (canRetire === -1) {
@@ -31,7 +34,6 @@ class RetirementComputation extends Component {
       userMessage = <span>You will retire in {canRetire} years</span>
     }
 
-    console.log(userMessage)
     return <div><pre>{userMessage}</pre></div>
 
   }
