@@ -5,6 +5,8 @@ import './App.css';
 import RetirementComputation from './RetirementComputation.js';
 import SavingRate from './SavingRate.js';
 
+const WithdrawalRate = 0.04;
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -13,7 +15,7 @@ class App extends Component {
     this.retirementExpense = 40000;
     this.currentNetworth = 0;
     this.interestRate = 0.05;
-    this.retirementNetworthGoal = 40000 / 0.04;
+    this.updateRetirementNetworthGoal();
 
     this.state = {
       postTaxIncome: this.postTaxIncome,
@@ -35,9 +37,9 @@ class App extends Component {
   }
 
   computeWorksheetData() {
-    var worksheetData = [];
+    let worksheetData = [];
 
-    var endingNetworth = this.currentNetworth;
+    let endingNetworth = this.currentNetworth;
     for (var i = 0; i < 100; i++) {
       var entry = {};
       entry['year'] = i;
@@ -57,9 +59,18 @@ class App extends Component {
     this.setState({worksheet: this.computeWorksheetData()});
   }
 
+  updateRetirementNetworthGoal() {
+    this.retirementNetworthGoal = this.retirementExpense / WithdrawalRate;
+  }
+
   handleChange(e, name) {
-    this[name] = e.target.value;
-    this.setState({[name]: e.target.value})
+    this[name] = parseInt(e.target.value);
+    this.setState({[name]: parseInt(e.target.value)})
+
+    if (name === 'retirementExpense') {
+      this.updateRetirementNetworthGoal();
+    }
+
     this.updateFullState();
   }
 
