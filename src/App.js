@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import RetirementComputation from './RetirementComputation.js';
+import ProgressTable from './ProgressTable.js';
 import SavingRate from './SavingRate.js';
 
 const WithdrawalRate = 0.04;
@@ -97,6 +98,7 @@ class App extends Component {
           Your Current Net Worth <input type="text" type="number" name="currentNetworth" value={this.state.currentNetworth} onChange={ (e) => this.handleChange(e, 'currentNetworth') } />
         </p>
         <SavingRate income={this.state.postTaxIncome} expense={this.state.currentExpense}/>
+        <ProgressTable income={this.state.postTaxIncome} expense={this.state.currentExpense}/>
         <RetirementComputation data={this.state.worksheet}/>
       </div>
     );

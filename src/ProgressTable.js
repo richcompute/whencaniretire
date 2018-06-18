@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class SavingRate extends Component {
+class ProgressTable extends Component {
   constructor(props) {
     super(props)
 
@@ -12,9 +12,9 @@ class SavingRate extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     return {
-    postTaxIncome: parseInt(nextProps.income, 10),
-    currentExpense: parseInt(nextProps.expense, 10)
-      }
+      postTaxIncome: parseInt(nextProps.income, 10),
+      currentExpense: parseInt(nextProps.expense, 10)
+    }
   }
 
   render() {
@@ -23,4 +23,4 @@ class SavingRate extends Component {
   }
 }
 
-export default SavingRate;
+export default ProgressTable;
