@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class RetirementComputation extends Component {
   constructor(props) {
     super(props)
-    console.log("Constructor: " + JSON.stringify(props, null, 2));
     this.state = {
       data: props.data
     }

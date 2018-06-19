@@ -44,13 +44,19 @@ class App extends Component {
     for (var i = 0; i < 100; i++) {
       var entry = {};
       entry['year'] = i;
-      entry['startingNetworth'] = endingNetworth;
+      let startingNetworth = endingNetworth;
+      entry['startingNetworth'] = endingNetworth.toFixed(2);
       entry['investment'] = this.postTaxIncome - this.currentExpense;
-      entry['interest'] = (entry['startingNetworth'] + entry['investment'] / 2) * this.interestRate;
-      endingNetworth = entry['startingNetworth'] + entry['investment'] + entry['interest'];
-      entry['endingNetworth'] = endingNetworth;
-      entry['canRetire'] = (endingNetworth >= this.retirementNetworthGoal);
+      let interest = (startingNetworth + entry['investment'] / 2) * this.interestRate;
+      entry['interest'] = interest.toFixed(2);
+      endingNetworth = startingNetworth + entry['investment'] + interest;
+      entry['endingNetworth'] = endingNetworth.toFixed(2);
+      let canRetire = (endingNetworth >= this.retirementNetworthGoal);
+      entry['canRetire'] = canRetire;
       worksheetData.push(entry);
+      if (canRetire) {
+        break;
+      }
     }
 
     return worksheetData
@@ -98,8 +104,8 @@ class App extends Component {
           Your Current Net Worth <input type="text" type="number" name="currentNetworth" value={this.state.currentNetworth} onChange={ (e) => this.handleChange(e, 'currentNetworth') } />
         </p>
         <SavingRate income={this.state.postTaxIncome} expense={this.state.currentExpense}/>
-        <ProgressTable income={this.state.postTaxIncome} expense={this.state.currentExpense}/>
         <RetirementComputation data={this.state.worksheet}/>
+        <ProgressTable data={this.state.worksheet}/>
       </div>
     );
   }

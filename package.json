@@ -9,7 +9,9 @@
     "rc-slider": "^8.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-scripts": "1.1.4"
+    "react-json-table": "^0.1.1",
+    "react-scripts": "1.1.4",
+    "react-table": "^6.8.6"
   },
   "scripts": {
     "start": "react-scripts start",
