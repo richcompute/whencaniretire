@@ -88,22 +88,27 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">When Can I Retire?</h1>
         </header>
-        <p className="App-intro">
+        <div className="App-intro">
           Enter the information requested to figure out your retirement date
-        </p>
-        // Align input with https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html
-        <p>
-          Your Take Home Pay <input type="text" type="number" name="postTaxIncome" value={this.state.postTaxIncome} onChange={ (e) => this.handleChange(e, 'postTaxIncome') } />
-        </p>
-        <p>
-          Your Current Expense <input type="text" type="number" name="currentExpense" value={this.state.currentExpense} onChange={ (e) => this.handleChange(e, 'currentExpense') } />
-        </p>
-        <p>
-          Your Retirement Expense <input type="text" type="number" name="retirementExpense" value={this.state.retirementExpense} onChange={ (e) => this.handleChange(e, 'retirementExpense') } />
-        </p>
-        <p>
-          Your Current Net Worth <input type="text" type="number" name="currentNetworth" value={this.state.currentNetworth} onChange={ (e) => this.handleChange(e, 'currentNetworth') } />
-        </p>
+        </div>
+        <form>
+          <p>
+            <label>Your Take Home Pay</label>
+            <input type="text" type="number" name="postTaxIncome" value={this.state.postTaxIncome} onChange={ (e) => this.handleChange(e, 'postTaxIncome') } />
+          </p>
+          <p>
+            <label>Your Current Expense</label>
+            <input type="text" type="number" name="currentExpense" value={this.state.currentExpense} onChange={ (e) => this.handleChange(e, 'currentExpense') } />
+          </p>
+          <p>
+            <label>Your Retirement Expense</label>
+            <input type="text" type="number" name="retirementExpense" value={this.state.retirementExpense} onChange={ (e) => this.handleChange(e, 'retirementExpense') } />
+          </p>
+          <p>
+            <label>Current Net Worth</label>
+            <input type="text" type="number" name="currentNetworth" value={this.state.currentNetworth} onChange={ (e) => this.handleChange(e, 'currentNetworth') } />
+          </p>
+          </form>
         <SavingRate income={this.state.postTaxIncome} expense={this.state.currentExpense}/>
         <RetirementComputation data={this.state.worksheet}/>
         <ProgressTable data={this.state.worksheet}/>
