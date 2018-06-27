@@ -22,9 +22,9 @@ class SavingRate extends Component {
 
     let userMessage;
     if (isValidSavingRate) {
-      userMessage = <span><h2>Your saving rate: {(Math.round((this.state.postTaxIncome - this.state.currentExpense) / (this.state.postTaxIncome) * 100) + '%')}</h2></span>
+      userMessage = <span><h2>Votre taux d'épargne: {(Math.round((this.state.postTaxIncome - this.state.currentExpense) / (this.state.postTaxIncome) * 100) + '%')}</h2></span>
     } else {
-      userMessage = <span><h2>Invalid Saving Rate</h2></span>
+      userMessage = <span><h2>Taux d'épargne invalide!</h2></span>
     }
 
     return <div><pre>{userMessage}</pre></div>

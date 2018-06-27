@@ -20,23 +20,23 @@ class ProgressTable extends Component {
 
     const data = this.state.data;
     const columns = [{
-        Header: 'Year',
+        Header: 'Année',
         accessor: 'year' // String-based value accessors!
       }, {
-      Header: 'Start',
+      Header: 'Début',
       accessor: 'startingNetworth',
       Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
       },
       {
-        Header: 'Investment',
+        Header: 'Investissement',
         accessor: 'investment'
       },
       {
-        Header: 'Interest',
+        Header: 'Intérêt',
         accessor: 'interest'
       },
       {
-        Header: 'End',
+        Header: 'Fin',
         accessor:  'endingNetworth'
       }
     ];

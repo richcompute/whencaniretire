@@ -28,9 +28,9 @@ class RetirementComputation extends Component {
 
     let userMessage;
     if (canRetire === -1) {
-      userMessage = <span>You will never retire!</span>
+      userMessage = <span>Vous ne pourrez jamais vous retirer!</span>
     } else {
-      userMessage = <span><h2>You will retire in {canRetire} years</h2></span>
+      userMessage = <span><h2>Vous allez vous retirer dans {canRetire} années!</h2></span>
     }
 
     return <div><pre>{userMessage}</pre></div>

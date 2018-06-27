@@ -87,30 +87,30 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">When Can I Retire?</h1>
+          <h1 className="App-title">Quand puis-je me retirer?</h1>
         </header>
         <div className="App-intro">
-          Enter the information requested to figure out your retirement date
+          Entrez l'information demandé pour obtenir votre date de retraite
         </div>
         <form>
           <p>
-            <label>Your Take Home Pay</label>
+            <label>Vos revenus, après impôt</label>
             <input type="text" type="number" name="postTaxIncome" value={this.state.postTaxIncome} onChange={ (e) => this.handleChange(e, 'postTaxIncome') } />
           </p>
           <p>
-            <label>Your Current Expense</label>
+            <label>Vos dépenses</label>
             <input type="text" type="number" name="currentExpense" value={this.state.currentExpense} onChange={ (e) => this.handleChange(e, 'currentExpense') } />
           </p>
           <p>
-            <label>Your Retirement Expense</label>
+            <label>Vos dépenses à la retraite</label>
             <input type="text" type="number" name="retirementExpense" value={this.state.retirementExpense} onChange={ (e) => this.handleChange(e, 'retirementExpense') } />
           </p>
           <p>
-            <label>Current Net Worth</label>
+            <label>Votre valeur nette</label>
             <input type="text" type="number" name="currentNetworth" value={this.state.currentNetworth} onChange={ (e) => this.handleChange(e, 'currentNetworth') } />
           </p>
           <p>
-            <label>Investment Return</label>
+            <label>Retour sur l'investissement</label>
             <input type="text" type="number" name="interestRate" value={this.state.interestRate} onChange={ (e) => this.handleChange(e, 'interestRate') } />
           </p>
           </form>
