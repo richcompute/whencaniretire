@@ -17,20 +17,8 @@ class ProgressTable extends Component {
   }
 
   render() {
-    console.log(this.state.data);
-    /*
-    const data = [{
-      name: 'Tanner Linsley',
-      age: 26,
-      friend: {
-        name: 'Jason Maurer',
-        age: 23,
-      }
-    }
-    ];*/
 
     const data = this.state.data;
-
     const columns = [{
         Header: 'Year',
         accessor: 'year' // String-based value accessors!
@@ -53,18 +41,11 @@ class ProgressTable extends Component {
       }
     ];
 
-      /*
-      year: 0,
-      startingNetworth: 0,
-      investment: 0,
-      interest: 0,
-      endingNetworth: 0,
-      canRetire: false
-      */
-
       return < ReactTable
         data = { data }
         columns = { columns }
+        showPagination = {false}
+        minRows = {0}
       />
   }
 }
