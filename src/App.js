@@ -44,7 +44,7 @@ class App extends Component {
     let endingNetworth = this.currentNetworth;
     for (var i = 0; i < 100; i++) {
       var entry = {};
-      entry['year'] = i;
+      entry['year'] = i + 1;
       let startingNetworth = endingNetworth;
       entry['startingNetworth'] = endingNetworth.toFixed(2);
       entry['investment'] = this.postTaxIncome - this.currentExpense;

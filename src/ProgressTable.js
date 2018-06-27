@@ -46,6 +46,7 @@ class ProgressTable extends Component {
         columns = { columns }
         showPagination = {false}
         minRows = {0}
+        sortable = { false }
       />
   }
 }
