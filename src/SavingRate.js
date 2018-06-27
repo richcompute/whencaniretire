@@ -19,7 +19,15 @@ class SavingRate extends Component {
 
   render() {
     let isValidSavingRate = (this.state.postTaxIncome >= this.state.currentExpense);
-    return isValidSavingRate ? (Math.round((this.state.postTaxIncome - this.state.currentExpense) / (this.state.postTaxIncome) * 100) + '%') : "Invalid Saving Rate";
+
+    let userMessage;
+    if (isValidSavingRate) {
+      userMessage = <span><h2>Your saving rate: {(Math.round((this.state.postTaxIncome - this.state.currentExpense) / (this.state.postTaxIncome) * 100) + '%')}</h2></span>
+    } else {
+      userMessage = <span><h2>Invalid Saving Rate</h2></span>
+    }
+
+    return <div><pre>{userMessage}</pre></div>
   }
 }
 

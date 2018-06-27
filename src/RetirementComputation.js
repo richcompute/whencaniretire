@@ -19,7 +19,7 @@ class RetirementComputation extends Component {
     let canRetire = -1;
     for (let entry in this.state.data) {
       if (this.state.data[entry].canRetire) {
-        canRetire = this.state.data[entry].year;
+        canRetire = this.state.data[entry].year + 1;
         break;
       }
     }
