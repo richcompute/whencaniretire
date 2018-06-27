@@ -90,7 +90,7 @@ class App extends Component {
           <h1 className="App-title">Quand puis-je me retirer?</h1>
         </header>
         <div className="App-intro">
-          Entrez l'information demandé pour obtenir votre date de retraite
+          Entrez l'information demandée pour obtenir votre date de retraite
         </div>
         <form>
           <p>
