@@ -15,7 +15,7 @@ class App extends Component {
     this.currentExpense = 45000;
     this.retirementExpense = 40000;
     this.currentNetworth = 0;
-    this.interestRate = 0.05;
+    this.interestRate = 5;
     this.updateRetirementNetworthGoal();
 
     this.state = {
@@ -23,6 +23,7 @@ class App extends Component {
       currentExpense: this.currentExpense,
       retirementExpense: this.retirementExpense,
       currentNetworth: this.currentNetworth,
+      interestRate: this.interestRate,
       worksheet: [
         {
           year: 0,
@@ -47,7 +48,7 @@ class App extends Component {
       let startingNetworth = endingNetworth;
       entry['startingNetworth'] = endingNetworth.toFixed(2);
       entry['investment'] = this.postTaxIncome - this.currentExpense;
-      let interest = (startingNetworth + entry['investment'] / 2) * this.interestRate;
+      let interest = (startingNetworth + entry['investment'] / 2) * this.interestRate / 100.0;
       entry['interest'] = interest.toFixed(2);
       endingNetworth = startingNetworth + entry['investment'] + interest;
       entry['endingNetworth'] = endingNetworth.toFixed(2);
@@ -107,6 +108,10 @@ class App extends Component {
           <p>
             <label>Current Net Worth</label>
             <input type="text" type="number" name="currentNetworth" value={this.state.currentNetworth} onChange={ (e) => this.handleChange(e, 'currentNetworth') } />
+          </p>
+          <p>
+            <label>Investment Return</label>
+            <input type="text" type="number" name="interestRate" value={this.state.interestRate} onChange={ (e) => this.handleChange(e, 'interestRate') } />
           </p>
           </form>
         <SavingRate income={this.state.postTaxIncome} expense={this.state.currentExpense}/>
