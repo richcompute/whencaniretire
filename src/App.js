@@ -91,6 +91,7 @@ class App extends Component {
         <p className="App-intro">
           Enter the information requested to figure out your retirement date
         </p>
+        // Align input with https://stackoverflow.com/questions/4309950/how-to-align-input-forms-in-html
         <p>
           Your Take Home Pay <input type="text" type="number" name="postTaxIncome" value={this.state.postTaxIncome} onChange={ (e) => this.handleChange(e, 'postTaxIncome') } />
         </p>

@@ -30,7 +30,7 @@ class RetirementComputation extends Component {
     if (canRetire === -1) {
       userMessage = <span>You will never retire!</span>
     } else {
-      userMessage = <span>You will retire in {canRetire} years</span>
+      userMessage = <span><h2>You will retire in {canRetire} years</h2></span>
     }
 
     return <div><pre>{userMessage}</pre></div>
